@@ -1,7 +1,10 @@
 package application;
 
 import model.entities.CarRental;
+import model.entities.Invoice;
 import model.entities.Vehicle;
+import model.services.BrazilTaxService;
+import model.services.RentalService;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -35,7 +38,18 @@ public class Program {
         // Instanciando o objeto carRental
         CarRental carRental = new CarRental(start, finish, new Vehicle(carModel));
 
-        // Instanciando o objeto rentalService
+
+        RentalService rentalService = new RentalService(pricePerHour, pricePerDay, new BrazilTaxService());
+
+        rentalService.processInvoice(carRental);
+
+        System.out.println("INVOICE:");
+        System.out.println("Basic payment: " + String.format("%.2f", carRental.getInvoice().getBasicPayment()));
+        System.out.println("Tax: " + String.format("%.2f", carRental.getInvoice().getTax()));
+        System.out.println();
+        System.out.println("Total payment: " + String.format("%.2f", carRental.getInvoice().getTotalPayment()));
+
+
 
         sc.close();
     }
