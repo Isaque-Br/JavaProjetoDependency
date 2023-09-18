@@ -1,13 +1,15 @@
 package application;
 
-import entities.Contract;
-import entities.Installment;
-import services.ContractService;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Scanner;
+
+import entities.Contract;
+import entities.Installment;
+import services.ContractService;
+import services.PaypalService;
 
 public class Program {
 
@@ -32,7 +34,7 @@ public class Program {
         System.out.print("Enter number of installments: ");
         int n = sc.nextInt();
 
-        ContractService contractService = new ContractService(null);
+        ContractService contractService = new ContractService(new PaypalService());
 
         contractService.processContract(obj, n);
 

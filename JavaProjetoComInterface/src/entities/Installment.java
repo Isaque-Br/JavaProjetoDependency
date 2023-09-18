@@ -6,24 +6,20 @@ import java.time.format.DateTimeFormatter;
 public class Installment {
 
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private LocalDate date;
+    private LocalDate dueDate;
     private Double amount;
 
-    public Installment() {
-
-    }
-
-    public Installment(LocalDate date, Double amount) {
-        this.date = date;
+    public Installment(LocalDate dueDate, Double amount) {
+        this.dueDate = dueDate;
         this.amount = amount;
     }
 
-    public LocalDate getdate() {
-        return date;
+    public LocalDate getDueDate() {
+        return dueDate;
     }
 
-    public void setdate(LocalDate date) {
-        this.date = date;
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
     }
 
     public Double getAmount() {
@@ -33,10 +29,10 @@ public class Installment {
     public void setAmount(Double amount) {
         this.amount = amount;
     }
-    
+
     @Override
     public String toString() {
-        return date.format(formatter) + " - " + String.format("%.2f", amount);
+        return dueDate.format(formatter) + " - " + String.format("%.2f", amount);
     }
 
 }

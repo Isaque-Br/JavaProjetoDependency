@@ -11,9 +11,6 @@ public class Contract {
     private Double totalValue;
 
     private List<Installment> installments = new ArrayList<>();
-    public Contract() {
-
-    }
 
     public Contract(Integer number, LocalDate date, Double totalValue) {
         this.number = number;
